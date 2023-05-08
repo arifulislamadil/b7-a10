@@ -1,9 +1,14 @@
 import React from 'react';
+import Chefs from '../chefs/Chefs';
+import Banner from '../banner/Banner';
 
 const Home = () => {
     return (
-        <div className='container mx-auto'>
-            <h3>Home</h3>
+        <div className=''>
+            <div className=''>
+            <Banner/>
+            <Chefs/>
+            </div>
         </div>
     );
 };

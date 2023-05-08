@@ -7,18 +7,20 @@ const Header = () => {
         setProfile(!profile);
     }
   return (
-    <div className=" mx-auto px-4">
-      <div className="navbar mx-auto px-4 bg-base-100">
+    <div className="container mx-auto px-4">
+      <div className="container navbar mx-auto px-4 bg-base-100">
         <div className="flex-1">
-          <a className="btn btn-ghost normal-case text-xl">MasterChefs</a>
+          <a className="btn btn-ghost normal-case text-xl">
+            <img style={{width:"50px",height:"50px" ,marginRight:"5px"}} src="https://cdn.iconscout.com/icon/free/png-256/free-master-chef-3442460-2875721.png" alt="" />
+            MasterChefs</a>
         </div>
         <div className="hidden md:inline">
             <ul>
                 <li>
                     <Link className="btn btn-ghost normal-case text-xl bg-slate-300 mr-2" to="/">Home</Link>
                     <Link className="btn btn-ghost normal-case text-xl bg-slate-300 mr-2" to="/">About</Link>
-                    <Link className="btn btn-ghost normal-case text-xl bg-slate-300 mr-2" to="/">Chefs</Link>
-                    <Link className="btn btn-ghost normal-case text-xl bg-slate-300 mr-2" to="/">Blogs</Link>
+                    <Link className="btn btn-ghost normal-case text-xl bg-slate-300 mr-2" to="/chefs">Chefs</Link>
+                    <Link className="btn btn-ghost normal-case text-xl bg-slate-300 mr-2" to="/blogs">Blogs</Link>
                     <Link className="btn btn-ghost normal-case text-xl bg-slate-300 mr-2" to="/">Contact</Link>
                 </li>
             </ul>
@@ -73,13 +75,12 @@ const Header = () => {
                 
                 <li>
                     <Link  onClick={!profile} className="btn btn-ghost normal-case text-xl  " to="/">Home</Link>
-                    </li>
                     <Link onClick={!profile}  className="btn btn-ghost normal-case text-xl " to="/">About</Link>
                     <Link onClick={!profile}  className="btn btn-ghost normal-case text-xl  " to="/">Chefs</Link>
                     <Link onClick={!profile}  className="btn btn-ghost normal-case text-xl  " to="/">Blogs</Link>
                     <Link onClick={!profile}  className="btn btn-ghost normal-case text-xl  " to="/">Contact</Link>
                     <Link onClick={!profile}  className="btn btn-ghost bg-red-500 normal-case text-xl  " to="/">Logout</Link>
-                
+                    </li>
 
             </ul>
           </div>
