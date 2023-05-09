@@ -8,12 +8,15 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import app from "../../firebase/firebase.config";
+import { AuthContext } from "../../authProvider/AuthProvider";
+
 
 const Login = () => {
+  
   const [name, setName] = useState(null);
   const [email, setEmail] = useState(null);
   const [photo, setPhoto] = useState(null);
-  console.log(name,email,photo);
+
   const auth = getAuth(app);
   const provider = new GoogleAuthProvider();
   const handleGoogleLogin = () => {
