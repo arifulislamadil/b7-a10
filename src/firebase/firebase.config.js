@@ -11,6 +11,7 @@ const firebaseConfig = {
   storageBucket: "master-chefs-bf962.appspot.com",
   messagingSenderId: "166158285298",
   appId: "1:166158285298:web:0d4104004210f06ba8536b"
+  
 };
 
 // Initialize Firebase

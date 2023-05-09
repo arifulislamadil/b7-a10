@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 
+
 const Header = () => {
+
+  
     const [profile,setProfile] = useState(false);
     const handleProfileClick = () => {
         setProfile(!profile);
@@ -65,8 +68,9 @@ const Header = () => {
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
                 <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-              </div>
+              </div>              
             </label>
+            
             <ul onClick={handleProfileClick}
             
               tabIndex={0}
@@ -84,6 +88,7 @@ const Header = () => {
 
             </ul>
           </div>
+          <Link className="btn btn-secondary " to="/login">login</Link>
         </div>
       </div>
     </div>
