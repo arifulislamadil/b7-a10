@@ -4,7 +4,7 @@ import { AuthContext } from "../../authProvider/AuthProvider";
 
 const Register = () => {
   const { registerUser } = useContext(AuthContext);
-  const [name, setName] = useState("");
+  const [user, setUser] = useState("");
   const [email, setEmail] = useState("");
   const [photo, setPhoto] = useState("");
   const [password, setPassword] = useState("");
@@ -16,10 +16,10 @@ const Register = () => {
       setError("password invalid need 8 characters at least one uppercase letter");
       return;
     }
-    if ((name, email, password)) {
+    if ((user, email, password)) {
       registerUser(email, password)
         .then((result) => {
-          console.log(result);
+          console.log(result.user);
         })
         .then((error) => {
           console.log(error);
@@ -37,7 +37,7 @@ const Register = () => {
         <p className="text-red-600">{error}</p>
         <form action="">
           <input
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => setUser(e.target.value)}
             type="text"
             placeholder="Your Name"
             className="input input-bordered input-primary w-full max-w-xs"

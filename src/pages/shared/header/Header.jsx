@@ -1,10 +1,21 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../authProvider/AuthProvider";
+import "./header.css"
 
 
 const Header = () => {
+  const { user ,logOut} = useContext(AuthContext);
+  console.log(user?.email);
+  const handleLogout =()=>{
+    logOut().then(() => {
+      console.log("logged out");
+    }).catch((error) => {
+     console.log(error);
+    });
+  }
 
-  
+
     const [profile,setProfile] = useState(false);
     const handleProfileClick = () => {
         setProfile(!profile);
@@ -64,12 +75,14 @@ const Header = () => {
               </div>
             </div>
           </div>
-          <div className="dropdown dropdown-end">
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <div className="w-10 rounded-full">
-                <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-              </div>              
-            </label>
+          <div className="dropdown dropdown-end" >
+           {
+            user ?  <label tabIndex={0} className="btn btn-ghost btn-circle avatar tooltip tooltip-bottom" data-tip={`${user?.email}`} >
+            <div className="w-10 rounded-full ">
+                <img src="https://s3.ca-central-1.amazonaws.com/subphoto-photos/2018-10-25_16-41-21/small_069d54_2018_Besney_Jonathan-9837.jpg" />
+              </div>             
+            </label>: ""
+           }
             
             <ul onClick={handleProfileClick}
             
@@ -78,17 +91,24 @@ const Header = () => {
             >
                 
                 <li>
-                    <Link  onClick={!profile} className="btn btn-ghost normal-case text-xl  " to="/">Home</Link>
+                    <Link  onClick={!profile} className="btn btn-ghost normal-case text-xl" to="/">Home</Link>
                     <Link onClick={!profile}  className="btn btn-ghost normal-case text-xl " to="/">About</Link>
                     <Link onClick={!profile}  className="btn btn-ghost normal-case text-xl  " to="/">Chefs</Link>
                     <Link onClick={!profile}  className="btn btn-ghost normal-case text-xl  " to="/">Blogs</Link>
                     <Link onClick={!profile}  className="btn btn-ghost normal-case text-xl  " to="/">Contact</Link>
-                    <Link onClick={!profile}  className="btn btn-ghost bg-red-500 normal-case text-xl  " to="/">Logout</Link>
+                  {
+                    user ? <Link onClick={handleLogout}  className="btn btn-ghost bg-red-500 normal-case text-xl  " to="/">Logout</Link>:<Link className="btn btn-secondary " to="/login">login</Link>
+                  }
                     </li>
 
             </ul>
           </div>
-          <Link className="btn btn-secondary " to="/login">login</Link>
+          
+        
+          {
+                    user  ? <Link onClick={handleLogout}  className="btn btn-ghost bg-red-500 normal-case text-xl md:inline hidden" to="/">Logout</Link>:<Link className="btn btn-secondary " to="/login">login</Link>
+                  }
+          
         </div>
       </div>
     </div>

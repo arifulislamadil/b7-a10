@@ -1,7 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation , useNavigate, useParams} from "react-router-dom";
 import {
+  GithubAuthProvider,
   GoogleAuthProvider,
   getAuth,
   onAuthStateChanged,
@@ -12,15 +13,67 @@ import { AuthContext } from "../../authProvider/AuthProvider";
 
 
 const Login = () => {
-  
   const [name, setName] = useState(null);
   const [email, setEmail] = useState(null);
-  const [photo, setPhoto] = useState(null);
+  const [photo, setPhoto] = useState(null); 
+  const [password, setPassword] = useState(null); 
+  const {logInUser} = useContext(AuthContext);
+
+  const [getAuthToken, setAuthToken] = useState();
+  const location = useLocation();
+  useEffect(()=>{
+    setAuthToken(location?.state?.from?.pathname)
+  },[])
+
+  const navigator = useNavigate();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    if(email, password) {
+      logInUser(email,password)
+      .then((res) => {
+          
+          if(getAuthToken) {
+            navigator(`${getAuthToken}`);
+          }else{
+            navigator("/")
+          }
+        })
+        .catch(error=>{
+          console.log(error);
+        })
+    }
+  }
 
   const auth = getAuth(app);
-  const provider = new GoogleAuthProvider();
+  // handle github login
+  const githubProvider = new GithubAuthProvider();
+const handleGithubLogin=()=>{
+  signInWithPopup(auth, githubProvider)
+  .then((result) => {
+    console.log(result);
+    
+      if(getAuthToken) {
+        navigator(`${getAuthToken}`);
+      }else{
+        navigator("/")
+      }
+  })
+  .catch((error)=>{
+    console.log(error);
+  })
+}
+
+
+
+
+
+
+  // Handle Google Sign In
+  
+  const googleProvider = new GoogleAuthProvider();
   const handleGoogleLogin = () => {
-    signInWithPopup(auth, provider)
+    signInWithPopup(auth, googleProvider)
       .then((result) => {
         const displayName = result.user.auth.currentUser.displayName;
         const displayEmail = result.user.auth.currentUser.email;
@@ -28,6 +81,13 @@ const Login = () => {
         setName(displayName);
         setEmail(displayEmail);
         setPhoto(displayPhoto);
+
+
+        if(getAuthToken) {
+          navigator(`${getAuthToken}`);
+        }else{
+          navigator("/")
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -40,17 +100,19 @@ const Login = () => {
         Login Your Account
       </h3>
       <input
+      onChange={(e) => setEmail(e.target.value)}
         type="text"
         placeholder="Your Email"
         className="input input-bordered input-primary w-full max-w-xs"
       />
       <input
         type="text"
+        onChange={(e) => setPassword(e.target.value)}
         placeholder="Your Password"
         className="input input-bordered input-primary w-full max-w-xs mt-3"
       />
       <div className="mt-3">
-        <Link className="btn btn-secondary mb-5 " to="">
+        <Link onClick={handleLogin} className="btn btn-secondary mb-5 " to="">
           Login
         </Link>
       </div>
@@ -63,12 +125,17 @@ const Login = () => {
         </h3>
 
         <h3 className="text-2xl">
-          <FaGithub />
+        <h3 className="text-2xl mr-5">
+          
+        </h3>
+        <button onClick={handleGithubLogin}>
+        <FaGithub />
+          </button>
         </h3>
       </div>
       <div>
         <span>Don't have account then </span>
-        <Link className="b" to="/register">
+        <Link className="" to="/register">
           <button className="text-red-600">Register</button>
         </Link>
       </div>
