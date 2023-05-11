@@ -9,6 +9,7 @@ import Register from "../pages/register/Register";
 import PrivateRoute from "./PrivateRoute";
 import Contact from "../pages/contact/Contact";
 import About from "../pages/About/About";
+import NotFound from "../pages/NotFound/NotFound";
 
 
 
@@ -51,8 +52,13 @@ const router = createBrowserRouter([
           path: "/register",
           element: <Register/>,
         },
+         
 
     ],
+  },
+  {
+    path: "*",
+    element: <NotFound/>,
   },
   
 ]);
