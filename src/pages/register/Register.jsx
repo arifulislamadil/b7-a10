@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../authProvider/AuthProvider";
 
 const Register = () => {
@@ -8,21 +8,35 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [photo, setPhoto] = useState("");
   const [password, setPassword] = useState("");
+
   const [error, setError] = useState("");
 
+  
+  const navigator = useNavigate()
   const handleRegistration = (e) => {
     e.preventDefault();
-    if (/^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,20}$/.test(password)) {
-      setError("password invalid need 8 characters at least one uppercase letter");
-      return;
-    }
+   
+   
     if ((user, email, password)) {
+      if(user.trim() === "" || photo.trim() === "" ) {
+        return ;
+      }
+      if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(password)) {
+        setError("password invalid need 8 characters at least one uppercase,lowercase,number and a special character Example : MyPassword123$");
+      return;
+       
+      }
       registerUser(email, password)
         .then((result) => {
-          console.log(result.user);
+          
+          if(result.user) {
+            navigator("/");
+          }
+
         })
         .then((error) => {
-          console.log(error);
+        setError(error);
+        console.log(error);
         });
     }
   };
@@ -34,7 +48,7 @@ const Register = () => {
           Register Your Account
         </h3>
 
-        <p className="text-red-600">{error}</p>
+        
         <form action="">
           <input
             onChange={(e) => setUser(e.target.value)}
@@ -51,7 +65,7 @@ const Register = () => {
           />
           <input
             onChange={(e) => setPhoto(e.target.value)}
-            type="text"
+            type="file"
             placeholder="Your PhotoURL"
             className="input input-bordered input-primary w-full max-w-xs mt-3"
           />
@@ -61,6 +75,7 @@ const Register = () => {
             placeholder="Your Password"
             className="input input-bordered input-primary w-full max-w-xs mt-3"
           />
+         <p className="text-red-600">{error}</p>
           <div className="flex text-center mx-auto w-full max-w-xs mt-3">
             <input type="checkbox" className="mr-3" />
             <span>Accept form & conditions</span>

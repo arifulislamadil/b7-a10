@@ -1,43 +1,75 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../authProvider/AuthProvider";
-import "./header.css"
-
+import "./header.css";
 
 const Header = () => {
-  const { user ,logOut} = useContext(AuthContext);
-  console.log(user?.email);
-  const handleLogout =()=>{
-    logOut().then(() => {
-      console.log("logged out");
-    }).catch((error) => {
-     console.log(error);
-    });
-  }
+  const { user, logOut } = useContext(AuthContext);
+  // console.log(user?.photoURL);
+  const handleLogout = () => {
+    logOut()
+      .then(() => {
+        console.log("logged out");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
-
-    const [profile,setProfile] = useState(false);
-    const handleProfileClick = () => {
-        setProfile(!profile);
-    }
+  const [profile, setProfile] = useState(false);
+  const handleProfileClick = () => {
+    setProfile(!profile);
+  };
   return (
     <div className="container mx-auto px-4">
       <div className="container navbar mx-auto px-4 bg-base-100">
         <div className="flex-1">
-          <a className="btn btn-ghost normal-case text-xl">
-            <img style={{width:"50px",height:"50px" ,marginRight:"5px"}} src="https://cdn.iconscout.com/icon/free/png-256/free-master-chef-3442460-2875721.png" alt="" />
-            MasterChefs</a>
+          <Link to="/">
+            <div className="btn btn-ghost normal-case text-xl">
+              <img
+                style={{ width: "50px", height: "50px", marginRight: "5px" }}
+                src="https://cdn.iconscout.com/icon/free/png-256/free-master-chef-3442460-2875721.png"
+                alt=""
+              />
+              MasterChefs
+            </div>
+          </Link>
         </div>
         <div className="hidden md:inline">
-            <ul>
-                <li>
-                    <Link className="btn btn-ghost normal-case text-xl bg-slate-300 mr-2" to="/">Home</Link>
-                    <Link className="btn btn-ghost normal-case text-xl bg-slate-300 mr-2" to="/">About</Link>
-                    <Link className="btn btn-ghost normal-case text-xl bg-slate-300 mr-2" to="/chefs">Chefs</Link>
-                    <Link className="btn btn-ghost normal-case text-xl bg-slate-300 mr-2" to="/blogs">Blogs</Link>
-                    <Link className="btn btn-ghost normal-case text-xl bg-slate-300 mr-2" to="/">Contact</Link>
-                </li>
-            </ul>
+          <ul>
+            <li>
+              <Link
+                className="btn btn-ghost normal-case text-xl bg-slate-300 mr-2"
+                to="/"
+              >
+                Home
+              </Link>
+              <Link
+                className="btn btn-ghost normal-case text-xl bg-slate-300 mr-2"
+                to="/"
+              >
+                About
+              </Link>
+              <Link
+                className="btn btn-ghost normal-case text-xl bg-slate-300 mr-2"
+                to="/chefs"
+              >
+                Chefs
+              </Link>
+              <Link
+                className="btn btn-ghost normal-case text-xl bg-slate-300 mr-2"
+                to="/blogs"
+              >
+                Blogs
+              </Link>
+              <Link
+                className="btn btn-ghost normal-case text-xl bg-slate-300 mr-2"
+                to="/"
+              >
+                Contact
+              </Link>
+            </li>
+          </ul>
         </div>
         <div className="flex-none">
           <div className="dropdown dropdown-end">
@@ -75,40 +107,92 @@ const Header = () => {
               </div>
             </div>
           </div>
-          <div className="dropdown dropdown-end" >
-           {
-            user ?  <label tabIndex={0} className="btn btn-ghost btn-circle avatar tooltip tooltip-bottom" data-tip={`${user?.email}`} >
-            <div className="w-10 rounded-full ">
-                <img src="https://s3.ca-central-1.amazonaws.com/subphoto-photos/2018-10-25_16-41-21/small_069d54_2018_Besney_Jonathan-9837.jpg" />
-              </div>             
-            </label>: ""
-           }
-            
-            <ul onClick={handleProfileClick}
-            
+          <div className="dropdown dropdown-end">
+            {user ? (
+              <label
+                tabIndex={0}
+                className="btn btn-ghost btn-circle avatar tooltip tooltip-bottom"
+                data-tip={`${user?.email}`}
+              >
+                <div className="w-10 rounded-full ">
+                  <img src={user?.photoURL} />
+                </div>
+              </label>
+            ) : (
+              ""
+            )}
+
+            <ul
+              onClick={handleProfileClick}
               tabIndex={0}
               className="inline sm:hidden menu menu-compact dropdown-content mt-5 p-2 shadow bg-white-400 rounded-box w-52"
             >
-                
-                <li>
-                    <Link  onClick={!profile} className="btn btn-ghost normal-case text-xl" to="/">Home</Link>
-                    <Link onClick={!profile}  className="btn btn-ghost normal-case text-xl " to="/">About</Link>
-                    <Link onClick={!profile}  className="btn btn-ghost normal-case text-xl  " to="/">Chefs</Link>
-                    <Link onClick={!profile}  className="btn btn-ghost normal-case text-xl  " to="/">Blogs</Link>
-                    <Link onClick={!profile}  className="btn btn-ghost normal-case text-xl  " to="/">Contact</Link>
-                  {
-                    user ? <Link onClick={handleLogout}  className="btn btn-ghost bg-red-500 normal-case text-xl  " to="/">Logout</Link>:<Link className="btn btn-secondary " to="/login">login</Link>
-                  }
-                    </li>
-
+              <li>
+                <Link
+                  onClick={!profile}
+                  className="btn btn-ghost normal-case text-xl"
+                  to="/"
+                >
+                  Home
+                </Link>
+                <Link
+                  onClick={!profile}
+                  className="btn btn-ghost normal-case text-xl "
+                  to="/"
+                >
+                  About
+                </Link>
+                <Link
+                  onClick={!profile}
+                  className="btn btn-ghost normal-case text-xl  "
+                  to="/"
+                >
+                  Chefs
+                </Link>
+                <Link
+                  onClick={!profile}
+                  className="btn btn-ghost normal-case text-xl  "
+                  to="/"
+                >
+                  Blogs
+                </Link>
+                <Link
+                  onClick={!profile}
+                  className="btn btn-ghost normal-case text-xl  "
+                  to="/"
+                >
+                  Contact
+                </Link>
+                {user ? (
+                  <Link
+                    onClick={handleLogout}
+                    className="btn btn-ghost bg-red-500 normal-case text-xl  "
+                    to="/"
+                  >
+                    Logout
+                  </Link>
+                ) : (
+                  <Link className="btn btn-secondary " to="/login">
+                    login
+                  </Link>
+                )}
+              </li>
             </ul>
           </div>
-          
-        
-          {
-                    user  ? <Link onClick={handleLogout}  className="btn btn-ghost bg-red-500 normal-case text-xl md:inline hidden" to="/">Logout</Link>:<Link className="btn btn-secondary " to="/login">login</Link>
-                  }
-          
+
+          {user ? (
+            <Link
+              onClick={handleLogout}
+              className="btn btn-ghost bg-red-500 normal-case text-xl md:inline hidden"
+              to="/"
+            >
+              Logout
+            </Link>
+          ) : (
+            <Link className="btn btn-secondary " to="/login">
+              login
+            </Link>
+          )}
         </div>
       </div>
     </div>

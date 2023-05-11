@@ -3,6 +3,7 @@ import { Link, useLoaderData, useParams } from "react-router-dom";
 
 const ChefDetails = () => {
   const chef = useLoaderData();
+  console.log(chef);
 
   return (
     <div className="">
@@ -22,6 +23,7 @@ const ChefDetails = () => {
                 <th>Id</th>
                 <th>Name</th>
                 <th>cuisine Type</th>
+                <th>ingredients</th>
               </tr>
             </thead>
             <tbody className="border-solid border-2 py-5 border-sky-500">
@@ -29,16 +31,22 @@ const ChefDetails = () => {
                 <td >1</td>
                 <td>{chef.recipes[0]}</td>
                 <td>Western</td>
+                <td>{chef.ingredients}</td>
+
               </tr>
               <tr className="border-solid border-2 border-green-500">
                 <td>2</td>
                 <td>{chef.recipes[1]}</td>
                 <td>Western</td>
+                <td>{chef.ingredients}</td>
+
               </tr>
               <tr className="border-solid border-2 border-green-500">
                 <td>3</td>
                 <td>{chef.recipes[2]}</td>
                 <td>Western</td>
+                <td>{chef.ingredients}</td>
+
               </tr>
             </tbody>
           </table>

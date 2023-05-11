@@ -23,13 +23,13 @@ const Chef = ({ chef }) => {
 
             <div className="flex gap-4">
               <div className="card-actions">
-                <button className="btn btn-primary px-10">Like</button>
+                <button className="btn btn-primary px-10">Like <span className="text-gray-900 ml-2 rounded-full p-2 bg-orange-600">4</span></button>
               </div>
 
               <div className="card-actions">
               {
                   <Link to={`/chef/${id}`} className="btn btn-primary px-10">
-                  Recipes
+                  View Recipes
                 
                 </Link>
                 
