@@ -18,6 +18,7 @@ const Blogs = () => {
                 <h3 className='text-2xl'><span className='font-bold'>Q</span>: Tell us the difference between nodejs and express js ? </h3>
                 <p><span className='font-bold'>A</span>: Node.js is a JavaScript runtime environment built on Chrome's V8 JavaScript engine that allows developers to run JavaScript code outside of a web browser. It provides a set of built-in modules for developing server-side applications in JavaScript.</p>
             </div>
+            
             <div className='mt-6'>
                 <h3 className='text-2xl'><span className='font-bold'>Q</span>: What is a custom hook, and why will you create a custom hook?? </h3>
                 <p><span className='font-bold'>A</span>: In React, a custom hook is a function that allows you to reuse stateful logic across multiple components. Custom hooks are functions that can use the built-in React hooks</p>
