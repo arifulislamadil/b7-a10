@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 
 const Chef = ({ chef }) => {
+
   const { id, name, experience, picture, recipes } = chef;
 
 

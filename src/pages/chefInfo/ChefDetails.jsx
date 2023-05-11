@@ -1,7 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLoaderData, useParams } from "react-router-dom";
 import { FaGithub, FaHeart, FaStar } from "react-icons/fa";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+
+
+
 const ChefDetails = () => {
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const [isButton2Disabled, setIsButton2Disabled] = useState(false);
+  const [isButton3Disabled, setIsButton3Disabled] = useState(false);
+  const handleClick = () => {
+    setIsButtonDisabled(true);
+    toast.success("Add Favorite!");
+  };
+  const handle2Click = () => {
+    setIsButton2Disabled(true);
+    toast.success("Add Favorite!");
+  };
+  const handle3Click = () => {
+    setIsButton3Disabled(true);
+    toast.success("Add Favorite!");
+  };
   const chef = useLoaderData();
   console.log(chef);
 
@@ -33,15 +54,22 @@ const ChefDetails = () => {
                 <td>Western</td>
                 <div>
                   <td>{chef.ingredients}</td>
-                  <td className="flex">
-                    <FaStar /> <FaStar /> <FaStar /> <FaStar />
-                  </td>
+                  
+                  <div className="rating">
+  <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
+  <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" checked />
+  <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
+  <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
+  <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
+
+</div>
                 </div>
                 <td>
-                  <button className="btn btn-primary">
+                <button className="btn bg-red-500" onClick={handleClick} disabled={isButtonDisabled}>
                     <span>
                       <FaHeart></FaHeart>
-                    </span>{" "}
+                      <ToastContainer />
+                    </span>
                     <span>Favorite</span>
                   </button>
                 </td>
@@ -52,15 +80,20 @@ const ChefDetails = () => {
                 <td>Western</td>
                 <div>
                   <td>{chef.ingredients}</td>
-                  <td className="flex">
-                    <FaStar /> <FaStar /> <FaStar /> <FaStar /> <FaStar />
-                  </td>
+                  
+                  <div className="rating">
+  <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
+  <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" checked />
+  <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
+
+</div>
                 </div>
                 <td>
-                  <button className="btn btn-primary">
+                <button className="btn bg-red-500" onClick={handle2Click} disabled={isButton2Disabled}>
                     <span>
                       <FaHeart></FaHeart>
-                    </span>{" "}
+                      <ToastContainer />
+                    </span>
                     <span>Favorite</span>
                   </button>
                 </td>
@@ -72,15 +105,20 @@ const ChefDetails = () => {
                 <td>Western</td>
                 <div>
                   <td>{chef.ingredients}</td>
-                  <td className="flex">
-                    <FaStar /> <FaStar /> <FaStar /> <FaStar />
-                  </td>
+                  <div className="rating">
+  <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
+  <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" checked />
+  <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
+  <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
+
+</div>
                 </div>
                 <td>
-                  <button className="btn btn-primary">
+                <button className="btn bg-red-500" onClick={handle3Click} disabled={isButton3Disabled}>
                     <span>
                       <FaHeart></FaHeart>
-                    </span>{" "}
+                      <ToastContainer />
+                    </span>
                     <span>Favorite</span>
                   </button>
                 </td>

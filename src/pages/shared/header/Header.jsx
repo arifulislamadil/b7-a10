@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../authProvider/AuthProvider";
 import "./header.css";
 
@@ -38,36 +38,63 @@ const Header = () => {
         <div className="hidden md:inline">
           <ul>
             <li>
-              <Link
-                className="btn btn-ghost normal-case text-xl bg-slate-300 mr-2"
-                to="/"
-              >
-                Home
-              </Link>
-              <Link
-                className="btn btn-ghost normal-case text-xl bg-slate-300 mr-2"
-                to="/"
-              >
-                About
-              </Link>
-              <Link
-                className="btn btn-ghost normal-case text-xl bg-slate-300 mr-2"
-                to="/chefs"
-              >
-                Chefs
-              </Link>
-              <Link
-                className="btn btn-ghost normal-case text-xl bg-slate-300 mr-2"
-                to="/blogs"
-              >
-                Blogs
-              </Link>
-              <Link
-                className="btn btn-ghost normal-case text-xl bg-slate-300 mr-2"
-                to="/"
-              >
-                Contact
-              </Link>
+            <NavLink
+                    to='/'
+                    className={({ isActive , isPending, }) =>
+                      isActive
+                        ? "active btn btn-ghost normal-case text-xl bg-slate-300 mr-2"
+                        
+                        : "btn btn-ghost normal-case text-xl bg-slate-300 mr-2"
+                    }
+                  >
+                   Blogs
+                  </NavLink>
+              <NavLink
+                    to='/about'
+                    className={({ isActive , isPending, }) =>
+                      isActive
+                        ? "active btn btn-ghost normal-case text-xl bg-slate-300 mr-2"
+                        
+                        : "btn btn-ghost normal-case text-xl bg-slate-300 mr-2"
+                    }
+                  >
+                   About
+                  </NavLink>
+             
+              <NavLink
+                    to='/chefs'
+                    className={({ isActive , isPending, }) =>
+                      isActive
+                        ? "active btn btn-ghost normal-case text-xl bg-slate-300 mr-2"
+                        
+                        : "btn btn-ghost normal-case text-xl bg-slate-300 mr-2"
+                    }
+                  >
+                   Chefs
+                  </NavLink>
+              <NavLink
+                    to='/blogs'
+                    className={({ isActive , isPending, }) =>
+                      isActive
+                        ? "active btn btn-ghost normal-case text-xl bg-slate-300 mr-2"
+                        
+                        : "btn btn-ghost normal-case text-xl bg-slate-300 mr-2"
+                    }
+                  >
+                   Blogs
+                  </NavLink>
+              <NavLink
+                    to='/Contact'
+                    className={({ isActive , isPending, }) =>
+                      isActive
+                        ? "active btn btn-ghost normal-case text-xl bg-slate-300 mr-2"
+                        
+                        : "btn btn-ghost normal-case text-xl bg-slate-300 mr-2"
+                    }
+                  >
+                   Contact
+                  </NavLink>
+             
             </li>
           </ul>
         </div>
@@ -149,6 +176,9 @@ const Header = () => {
                 >
                   Chefs
                 </Link>
+              
+                
+               
                 <Link
                   onClick={!profile}
                   className="btn btn-ghost normal-case text-xl  "
