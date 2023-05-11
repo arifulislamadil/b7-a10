@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLoaderData, useParams } from "react-router-dom";
-
+import { FaGithub, FaHeart, FaStar } from "react-icons/fa";
 const ChefDetails = () => {
   const chef = useLoaderData();
   console.log(chef);
@@ -17,8 +17,8 @@ const ChefDetails = () => {
           <p className="">Number Of Recipes : {chef.recipes.length}</p>
           <p className="">Number Of Likes: {chef.description.length}</p>
           <h3 className="text-2xl">Recipes List</h3>
-          <table className="w-3/5 my-5">
-            <thead className="border-solid border-2 py-5 border-sky-500">
+          <table className="w-4/5 my-5" >
+            <thead className="border-solid border-2 py-5 px-5 border-sky-500">
               <tr>
                 <th>Id</th>
                 <th>Name</th>
@@ -28,31 +28,71 @@ const ChefDetails = () => {
             </thead>
             <tbody className="border-solid border-2 py-5 border-sky-500">
               <tr className="border-solid border-2 border-green-500">
-                <td >1</td>
+                <td>1</td>
                 <td>{chef.recipes[0]}</td>
                 <td>Western</td>
-                <td>{chef.ingredients}</td>
-
+                <div>
+                  <td>{chef.ingredients}</td>
+                  <td className="flex">
+                    <FaStar /> <FaStar /> <FaStar /> <FaStar />
+                  </td>
+                </div>
+                <td>
+                  <button className="btn btn-primary">
+                    <span>
+                      <FaHeart></FaHeart>
+                    </span>{" "}
+                    <span>Favorite</span>
+                  </button>
+                </td>
               </tr>
               <tr className="border-solid border-2 border-green-500">
                 <td>2</td>
                 <td>{chef.recipes[1]}</td>
                 <td>Western</td>
-                <td>{chef.ingredients}</td>
-
+                <div>
+                  <td>{chef.ingredients}</td>
+                  <td className="flex">
+                    <FaStar /> <FaStar /> <FaStar /> <FaStar /> <FaStar />
+                  </td>
+                </div>
+                <td>
+                  <button className="btn btn-primary">
+                    <span>
+                      <FaHeart></FaHeart>
+                    </span>{" "}
+                    <span>Favorite</span>
+                  </button>
+                </td>
+                
               </tr>
               <tr className="border-solid border-2 border-green-500">
                 <td>3</td>
                 <td>{chef.recipes[2]}</td>
                 <td>Western</td>
-                <td>{chef.ingredients}</td>
+                <div>
+                  <td>{chef.ingredients}</td>
+                  <td className="flex">
+                    <FaStar /> <FaStar /> <FaStar /> <FaStar />
+                  </td>
+                </div>
+                <td>
+                  <button className="btn btn-primary">
+                    <span>
+                      <FaHeart></FaHeart>
+                    </span>{" "}
+                    <span>Favorite</span>
+                  </button>
+                </td>
 
               </tr>
             </tbody>
           </table>
           <div className="card-actions ">
             <Link to="/">
-              <button className="btn btn-primary text-center px-20 py-5">Home</button>
+              <button className="btn btn-primary text-center px-20 py-5">
+                Home
+              </button>
             </Link>
           </div>
         </div>
