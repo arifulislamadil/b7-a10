@@ -42,18 +42,18 @@ const Header = () => {
                     to='/'
                     className={({ isActive , isPending, }) =>
                       isActive
-                        ? "active btn btn-ghost normal-case text-xl bg-slate-300 mr-2"
+                        ? "active btn btn-ghost normal-case text-xl border-indigo-500 mr-2"
                         
                         : "btn btn-ghost normal-case text-xl bg-slate-300 mr-2"
                     }
                   >
-                   Blogs
+                   Home
                   </NavLink>
               <NavLink
                     to='/about'
                     className={({ isActive , isPending, }) =>
                       isActive
-                        ? "active btn btn-ghost normal-case text-xl bg-slate-300 mr-2"
+                        ? "active btn btn-ghost normal-case text-xl border-indigo-500 mr-2"
                         
                         : "btn btn-ghost normal-case text-xl bg-slate-300 mr-2"
                     }
@@ -65,7 +65,7 @@ const Header = () => {
                     to='/chefs'
                     className={({ isActive , isPending, }) =>
                       isActive
-                        ? "active btn btn-ghost normal-case text-xl bg-slate-300 mr-2"
+                        ? "active btn btn-ghost normal-case text-xl border-indigo-500 mr-2"
                         
                         : "btn btn-ghost normal-case text-xl bg-slate-300 mr-2"
                     }
@@ -76,7 +76,7 @@ const Header = () => {
                     to='/blogs'
                     className={({ isActive , isPending, }) =>
                       isActive
-                        ? "active btn btn-ghost normal-case text-xl bg-slate-300 mr-2"
+                        ? "active btn btn-ghost normal-case text-xl border-indigo-500 mr-2"
                         
                         : "btn btn-ghost normal-case text-xl bg-slate-300 mr-2"
                     }
@@ -87,7 +87,7 @@ const Header = () => {
                     to='/Contact'
                     className={({ isActive , isPending, }) =>
                       isActive
-                        ? "active btn btn-ghost normal-case text-xl bg-slate-300 mr-2"
+                        ? "active btn btn-ghost normal-case text-xl border-indigo-500 mr-2"
                         
                         : "btn btn-ghost normal-case text-xl bg-slate-300 mr-2"
                     }
@@ -135,19 +135,17 @@ const Header = () => {
             </div>
           </div>
           <div className="dropdown dropdown-end">
-            {user ? (
+            
               <label
                 tabIndex={0}
                 className="btn btn-ghost btn-circle avatar tooltip tooltip-bottom"
-                data-tip={`${user?.email}`}
+                data-tip={user ? `{${user?.email}}`: ""}
               >
                 <div className="w-10 rounded-full ">
                   <img src={user?.photoURL} />
                 </div>
               </label>
-            ) : (
-              ""
-            )}
+            
 
             <ul
               onClick={handleProfileClick}
@@ -165,14 +163,14 @@ const Header = () => {
                 <Link
                   onClick={!profile}
                   className="btn btn-ghost normal-case text-xl "
-                  to="/"
+                  to="/about"
                 >
                   About
                 </Link>
                 <Link
                   onClick={!profile}
                   className="btn btn-ghost normal-case text-xl  "
-                  to="/"
+                  to="/chefs"
                 >
                   Chefs
                 </Link>
@@ -182,14 +180,14 @@ const Header = () => {
                 <Link
                   onClick={!profile}
                   className="btn btn-ghost normal-case text-xl  "
-                  to="/"
+                  to="/blogs"
                 >
                   Blogs
                 </Link>
                 <Link
                   onClick={!profile}
                   className="btn btn-ghost normal-case text-xl  "
-                  to="/"
+                  to="/contact"
                 >
                   Contact
                 </Link>

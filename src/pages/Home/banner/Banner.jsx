@@ -2,8 +2,8 @@ import React from "react";
 
 const Banner = () => {
   return (
-    <div className="bg-gray-500 rounded-2xl">
-      <div className="py-10 my-5">
+    <div className=" rounded-2xl">
+      <div className="py-5 my-5">
         <div className="hero-content flex-col lg:flex-row">
           <img
          
