@@ -21,8 +21,8 @@ const Register = () => {
       if(user.trim() === "" || photo.trim() === "" ) {
         return ;
       }
-      if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(password)) {
-        setError("password invalid need 8 characters at least one uppercase,lowercase,number and a special character Example : MyPassword123$");
+      if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/.test(password)) {
+        setError("password invalid need 6 characters at least one uppercase,lowercase,number and a special character Example : MyPassword123$");
       return;
        
       }

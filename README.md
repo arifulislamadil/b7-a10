@@ -1,6 +1,6 @@
 # Master Chef Website - Your Go-To Destination for Popular Chef Recipes
 
-Welcome to the Master Chef website, your ultimate destination for popular recipes from top chefs! This web application is designed to provide you with a wide range of delicious recipes from around the world, all curated by expert chefs and culinary professionals. Built with React JS, React Router DOM, Tailwind CSS, Daisy UI, Firebase Authentication, React Lazy Load, React Toastify, and KendoReact PDF, our website offers a seamless and user-friendly experience that will take your cooking game to the next level.
+Welcome to the Master Chef website, your ultimate destination for popular recipes from top chefs! This web application is designed to provide you with a wide range of delicious recipes from around the USA, all curated by expert chefs and culinary professionals.
 
 ## Features
 - User authentication with Firebase Authentication.
@@ -11,4 +11,4 @@ Welcome to the Master Chef website, your ultimate destination for popular recipe
 - Export recipe as PDF using KendoReact PDF.
 
 ## Live Website
-You can visit the live website at [https://www.masterchef.com](https://www.masterchef.com) and explore the wide range of chef recipes that we have to offer. Whether you're a seasoned chef or a beginner in the kitchen, our website is the perfect place to discover new recipes, learn new techniques, and take your cooking skills to the next level. So why wait? Visit us today and start exploring!
+You can visit the live website at [https://master-chefs-bf962.web.app](https://master-chefs-bf962.web.app) and explore the wide range of chef recipes that we have to offer. 
