@@ -1,4 +1,4 @@
-# Master Chef Website - Your Go-To Destination for Popular Chef Recipes
+# Master Chef Website
 
 Welcome to the Master Chef website, your ultimate destination for popular recipes from top chefs! This web application is designed to provide you with a wide range of delicious recipes from around the USA, all curated by expert chefs and culinary professionals.
 
