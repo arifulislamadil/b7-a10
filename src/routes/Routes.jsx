@@ -30,7 +30,7 @@ const router = createBrowserRouter([
           element: <PrivateRoute>
             <ChefDetails/>
           </PrivateRoute>,
-          loader: ({params}) => fetch(`http://localhost:5000/chefs/${params.id}`)
+          loader: ({params}) => fetch(`https://master-chefs-bc-arifulislamadil.vercel.app/chefs/${params.id}`)
         },
          {
           path: "/contact",

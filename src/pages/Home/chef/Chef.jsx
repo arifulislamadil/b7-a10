@@ -14,7 +14,7 @@ const Chef = ({ chef }) => {
       <div>
         <div className="card w-96 bg-base-100 shadow-xl">
           <figure className="px-10 pt-10">
-          <LazyLoad placeholder={<img src="http://localhost:5000/chefs" alt="placeholder" />}>
+          <LazyLoad placeholder={<img src="https://master-chefs-bc-arifulislamadil.vercel.app/chefs" alt="placeholder" />}>
             <img src={picture} alt="Shoes" className="rounded-xl" />
             </LazyLoad>
           </figure>
